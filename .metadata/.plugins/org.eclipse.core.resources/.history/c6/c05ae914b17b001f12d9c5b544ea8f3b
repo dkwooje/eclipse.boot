@@ -1,0 +1,4 @@
+spring.application.name=sbb
+logging.level.root=WARN
+spring.main.banner-mode=off
+#server.port=8100

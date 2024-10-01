@@ -1,0 +1,8 @@
+package com.myste.sbb;
+
+
+
+public class QusetionRepository extends JpaRepository<Question, Integer> {
+
+
+}

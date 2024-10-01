@@ -1,0 +1,10 @@
+package com.myste.sbb;
+
+public class QusetionRepository {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
