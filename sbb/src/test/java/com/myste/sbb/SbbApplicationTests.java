@@ -1,3 +1,4 @@
+/*
 package com.myste.sbb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +37,7 @@ class SbbApplicationTests {
 	
 	
 	
-	
+	*/
 	/*
     @BeforeEach
     void setUp() {

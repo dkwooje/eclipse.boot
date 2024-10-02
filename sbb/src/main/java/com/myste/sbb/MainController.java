@@ -13,5 +13,9 @@ public class MainController {
 		return "이거슨 인덱스 페이지 인빈다.";
 	}
 	
+	@GetMapping("/")
+	public String root() {
+		return "redirect:/question/list";
+	}
 	
 }
