@@ -1,9 +1,0 @@
-package com.myste.sbb;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface QusetionRepository extends JpaRepository<Question, Integer> {
-
-
-
-}
