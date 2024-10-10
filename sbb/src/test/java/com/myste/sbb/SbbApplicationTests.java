@@ -1,4 +1,4 @@
-/*
+
 package com.myste.sbb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,9 +15,36 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.myste.sbb.answer.AnswerRepository;
 import com.myste.sbb.question.QuestionRepository;
+import com.myste.sbb.question.QuestionService;
 
 import jakarta.transaction.Transactional;
 
+@SpringBootTest
+class SbbApplicationTests {
+
+
+private QuestionService questionService;
+	
+@Autowired
+public SbbApplicationTests(QuestionService  questionService ) {
+	super();
+		this.questionService = questionService;
+}
+
+
+@Test
+void testjpa() {
+	for(int i = 1; i<=300; i++) {
+		String subject = String.format("테스트 데이터입니다: [%03d]", i);
+		questionService.getcreate(subject, "내용 없음");
+	}
+}
+
+}
+
+
+
+/*
 @SpringBootTest
 class SbbApplicationTests {
 
@@ -36,8 +63,7 @@ class SbbApplicationTests {
 	}
 	
 	
-	
-	*/
+*/
 	/*
     @BeforeEach
     void setUp() {
@@ -161,4 +187,3 @@ class SbbApplicationTests {
 	
 	*/
 	
-}

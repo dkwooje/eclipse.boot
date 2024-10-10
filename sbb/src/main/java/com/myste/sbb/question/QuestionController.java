@@ -2,6 +2,7 @@ package com.myste.sbb.question;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,11 +27,19 @@ public class QuestionController {
 		super();
 		this.questionService = questionService;
 	}
+	/*
 	
 	@GetMapping("/list")
 	public String list(Model model) {
 		List<Question> questionList = this.questionService.getList();
 		model.addAttribute("questionList",questionList);
+		return "question_list";
+	}
+	*/
+	@GetMapping("/list")
+	public String list(Model themodel, @RequestParam(value="page", defaultValue="0") int page) {
+		Page<Question> paging = this.questionService.getList(page);
+		themodel.addAttribute("Paging",paging);
 		return "question_list";
 	}
 	

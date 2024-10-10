@@ -1,9 +1,14 @@
 package com.myste.sbb.question;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.myste.sbb.DataNotFoundException;
@@ -22,12 +27,21 @@ public class QuestionService {
 			this.questionRepository = questionRepository;
 		}
 	*/	
-		
+	/*
 		public List<Question> getList(){
 			return this.questionRepository.findAll();
 				
 		}
-
+	*/
+		//getList에 페이징 적용
+		public Page<Question> getList(int page){
+			List<Sort.Order> sorts = new ArrayList<>();
+			sorts.add(Sort.Order.desc("createDate"));
+			Pageable pageable = PageRequest.of(page, 10,Sort.by(sorts));
+			return this.questionRepository.findAll(pageable);
+				
+		}
+		
 		public Question getQuestion(Integer id) {
 			Optional<Question> question = this.questionRepository.findById(id);
 			
@@ -37,7 +51,7 @@ public class QuestionService {
 				throw new DataNotFoundException("question you requested not found");
 			}
 		}
-		
+		//질문 등록 메서드
 		public void getcreate(String subject,String content) {
 			Question q = new Question();
 			q.setSubject(subject);
@@ -45,4 +59,5 @@ public class QuestionService {
 			q.setCreateDate(LocalDateTime.now());
 			this.questionRepository.save(q);
 		}
+
 }

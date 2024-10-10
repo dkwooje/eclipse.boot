@@ -1,15 +1,21 @@
 <!doctype html>
 <html lang="ko">
   <head>
+	<!-- 기본적인 메타 테그들-->
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  	<!--부트 스트랩 읽어오는 부분-->
+	  <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}" />
+	<!--우리가 작성해서 쓸 수 있는 스타일 시트 지정-->
+	  <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
     <title>질문 게시판</title>
   </head>
   <body>
-		<!--기본 템플릿 내부에 삽입되는 내용 시작-->
-		<th:block layout:fragment="content"></th:block>
-		<!--기본 템플릿 내부에 삽입되는 내용 끝-->
-  </body>
+	<!--네이게이션 바-->
+	<nav th:replace="~{navbar :: navbarFragment"}></nav>
+	<!--기본 템플릿 내부에 삽입되는 내용 시작-->
+	<th:block layout:fragment="content"></th:block>
+	<!--기본 템플릿 내부에 삽입되는 내용의 끝-->
+	<script th:src="@{/bootstrap.min.js"}></script>
+	</body>
 </html>
