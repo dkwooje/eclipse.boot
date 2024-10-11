@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
     <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.PageRequest"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Sort"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Sort.Order"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="org.springframework.validation.BindingResult"/>
+    <fullyQualifiedTypeName name="org.springframework.dao.DataIntegrityViolationException"/>
 </qualifiedTypeNameHistroy>

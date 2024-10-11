@@ -1,0 +1,5 @@
+package com.myste.sbb.config;
+
+public class SecurityConfig {
+
+}

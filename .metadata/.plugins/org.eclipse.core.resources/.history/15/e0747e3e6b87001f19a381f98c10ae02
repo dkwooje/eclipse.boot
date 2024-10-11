@@ -1,0 +1,9 @@
+package com.myste.sbb.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+}
