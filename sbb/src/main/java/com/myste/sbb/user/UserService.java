@@ -1,7 +1,12 @@
 package com.myste.sbb.user;
 
+import java.util.Optional;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.myste.sbb.DataNotFoundException;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -21,4 +26,16 @@ public class UserService {
 		this.userRepository.save(user);
 		return user;
 	}
+	
+	public SiteUser getUser(String username) {
+		Optional<SiteUser> siteUser = this.userRepository.findByUsername(username);
+		if(siteUser.isPresent()) {
+			return siteUser.get();
+		}else {
+			throw new DataNotFoundException("사용자를 찾지 못했습니다.");
+		}
+	}
+	
 }
+
+

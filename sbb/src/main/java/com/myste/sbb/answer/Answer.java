@@ -3,6 +3,7 @@ package com.myste.sbb.answer;
 import java.time.LocalDateTime;
 
 import com.myste.sbb.question.Question;
+import com.myste.sbb.user.SiteUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,8 +19,8 @@ import lombok.Setter;
 @Setter
 public class Answer {
 
-	
-	
+	@ManyToOne
+	private SiteUser author;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

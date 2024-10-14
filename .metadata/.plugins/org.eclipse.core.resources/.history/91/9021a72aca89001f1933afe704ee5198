@@ -1,0 +1,14 @@
+package com.myste.sbb.question;
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class UserSecurityService implements UserDetailsService {
+	
+	private final UserRepository userRepository;
+
+}
