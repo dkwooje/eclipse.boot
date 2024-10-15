@@ -2,6 +2,7 @@ package com.myste.sbb.answer;
 
 import java.security.Principal;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +35,8 @@ public class AnswerController {
 		this.userService = userService;
 	}
 
-
+	
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/Create/{id}")
 	public String createAnswer(Model model,
 			@PathVariable("id") Integer id,

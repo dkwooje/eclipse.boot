@@ -21,6 +21,8 @@ public class Question {
 	@ManyToOne
 	private SiteUser author;
 	
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -30,6 +32,9 @@ public class Question {
 
 	@Column(columnDefinition="TEXT")
 	private String content;
+	
+
+	private LocalDateTime modifyDate;
 	
 	private LocalDateTime createDate;
 	
@@ -77,9 +82,22 @@ public class Question {
 		this.answerList = answerList;
 	}
 
+	public SiteUser getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(SiteUser author) {
+		this.author = author;
+	}
 
 	
-	
+	public LocalDateTime getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(LocalDateTime modifyDate) {
+		this.modifyDate = modifyDate;
+	}
 
 
 	

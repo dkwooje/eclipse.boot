@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.myste.sbb.DataNotFoundException;
+import com.myste.sbb.user.SiteUser;
 
 import lombok.RequiredArgsConstructor;
 
@@ -52,11 +53,12 @@ public class QuestionService {
 			}
 		}
 		//질문 등록 메서드
-		public void getcreate(String subject,String content) {
+		public void getcreate(String subject,String content, SiteUser user) {
 			Question q = new Question();
 			q.setSubject(subject);
 			q.setContent(content);
 			q.setCreateDate(LocalDateTime.now());
+			q.setAuthor(user);
 			this.questionRepository.save(q);
 		}
 
