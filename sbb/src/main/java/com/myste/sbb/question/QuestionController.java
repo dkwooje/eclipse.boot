@@ -79,6 +79,7 @@ public class QuestionController {
 		return "redirect:/question/list";
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/modify/{id}")
 	public String questionModify(QuestionForm questionForm, @PathVariable("id") Integer id, Principal principal) {
 		Question question = this.questionService.getQuestion(id);
@@ -89,4 +90,19 @@ public class QuestionController {
 		questionForm.setContent(question.getContent());
 		return "question_form";
 	}
+	
+	@PreAuthorize("isAuthenticated()")
+	@PostMapping("/modify/{id}")
+	public String questionModify(@Valid QuestionForm questionForm,BindingResult bindingResult,
+									@PathVariable("id") Integer id, Principal principal) {
+		if(bindingResult.hasErrors()) {
+			return "question_form";
+		}
+		Question question = this.questionService.getQuestion(id);
+		if(!question.getAuthor().getUsername().equals(principal.getName())) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"수정을 할 권한이 없는 사용자입니다.");
+		}
+		this.questionService.modify(question, questionForm.getSubject(), questionForm.getContent());
+		return String.format("/redirect:/question/detail/%s", id);
+}
 }
