@@ -13,7 +13,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 
@@ -98,16 +102,5 @@ public class QuestionController {
         }
         this.questionService.modify(question, questionForm.getSubject(), questionForm.getContent());
         return String.format("/redirect:/question/detail/%s", id);
-    }
-
-    @PreAuthorize("iaAuthenticated()")
-    @GetMapping("/delete/{id}")
-    public String questionDelete(@PathVariable("id") Integer id, Principal principal){
-        Question question = this.questionService.getQuestion(id);
-        if(!question.getAuthor().getUsername().equals(principal.getName())){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"삭제 권한이 없습니다");
-        }
-        this.questionService.delete(question);
-        return "redirect:/";
     }
 }
