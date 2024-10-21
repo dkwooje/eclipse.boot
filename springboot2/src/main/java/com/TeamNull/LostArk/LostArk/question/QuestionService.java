@@ -32,7 +32,7 @@ public class QuestionService {
 	/*
 		public List<Question> getList(){
 			return this.questionRepository.findAll();
-
+.....
 		}
 	*/
     //getList에 페이징 적용
