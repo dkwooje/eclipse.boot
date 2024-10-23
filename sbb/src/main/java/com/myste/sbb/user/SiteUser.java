@@ -25,7 +25,9 @@ public class SiteUser {
 	@Column(unique = true)
 	private String email;
 	
-	
+	/*
+	헬퍼 클래스 추가
+	 */
 	
 }
 
