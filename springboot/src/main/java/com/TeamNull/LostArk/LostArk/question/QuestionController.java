@@ -39,9 +39,11 @@ public class QuestionController {
     }
     */
     @GetMapping("/list")
-    public String list(Model themodel, @RequestParam(value="page", defaultValue="0") int page) {
-        Page<Question> paging = this.questionService.getList(page);
+    public String list(Model themodel, @RequestParam(value="page", defaultValue="0") int page,
+                        @RequestParam(value = "kw",defaultValue = "")String kw){
+        Page<Question> paging = this.questionService.getList(page,kw);
         themodel.addAttribute("Paging",paging);
+        themodel.addAttribute("kw",kw);
         return "question_list";
     }
 
@@ -110,4 +112,15 @@ public class QuestionController {
         this.questionService.delete(question);
         return "redirect:/";
     }
+
+    @PreAuthorize("iaAuthenticated()")
+    @GetMapping("/vote/{id}")
+    public String questionVote(Principal principal, @PathVariable("id") Integer id){
+        Question question= this.questionService.getQuestion(id);
+        SiteUser siteUser = this.userService.getUser(principal.getName());
+        this.questionService.vote(question,siteUser);
+        return  String.format("redirect:/question/detail/%s", id);
+    }
+
+
 }
